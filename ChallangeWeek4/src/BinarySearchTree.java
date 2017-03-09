@@ -18,7 +18,7 @@
  * Implements an unbalanced binary search tree. Note that all "matching" is
  * based on the compareTo method.
  * 
- * @author Mark Allen Weiss
+ * @author Gereon Mendler & Fritz Hast
  */
 public class BinarySearchTree {
 	/**
