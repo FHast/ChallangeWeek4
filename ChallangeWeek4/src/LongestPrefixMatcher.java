@@ -7,10 +7,10 @@ import java.util.TreeMap;
 
 class LongestPrefixMatcher {
 	// TODO: Request access token from your student assistant
-	public static final String ACCESS_TOKEN = "s1234567_abcde";
+	public static final String ACCESS_TOKEN = "s1776592_ys2h8";
 
-	public static final String ROUTES_FILE = "src/routes.txt";
-	public static final String LOOKUP_FILE = "src/lookup.txt";
+	public static final String ROUTES_FILE = "routes.txt";
+	public static final String LOOKUP_FILE = "lookup.txt";
 
 	protected ArrayList<Integer> p28 = new ArrayList<>();
 	protected ArrayList<Integer> p27 = new ArrayList<>();
@@ -188,9 +188,7 @@ class LongestPrefixMatcher {
 	 *            The IP address to be looked up in integer representation
 	 * @return The port number this IP maps to
 	 */
-	private int lookup(int ip) {
-		System.out.println("looking for: " + ipToHuman(ip));
-		
+	private int lookup(int ip) {		
 		int result = Collections.binarySearch(p28, (ip >>> 4));
 		if (result < 0) {
 			result = Collections.binarySearch(p27, (ip >>> 5));
