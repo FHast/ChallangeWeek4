@@ -31,7 +31,11 @@ class LongestPrefixMatcher {
 	 * @param portNumber The port number the IP block should route to
 	 */
 	private void addRoute(int ip, byte prefixLength, int portNumber) { 
-		// TODO: Store this route for later use in lookup() method
+		// Buckets for every prefixlength
+		
+		// Binary tree for each bucket
+		
+		// Map for ip -> portnumber
 	}
 
 	/**
