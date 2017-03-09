@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.TreeMap;
 
 class LongestPrefixMatcher {
@@ -47,6 +48,10 @@ class LongestPrefixMatcher {
 	 */
 	public LongestPrefixMatcher() {
 		this.readRoutes();
+		int ip = parseIP("1.0.19.6");
+		System.out.println("looking for: " + ip + ", shortened: " + (ip >>> 9));
+		System.out.println("position in p23: " + Collections.binarySearch(p23, ip >>> 9));
+		System.out.println("portnumber in map: " + ports.get(ports.get((ip >>> 9))));
 		this.readLookup();
 
 	}
@@ -67,7 +72,9 @@ class LongestPrefixMatcher {
 		// Binary tree for each bucket
 
 		// get Prefix
-		int prefixIP = ip >> (32 - prefixLength);
+		//System.out.println(ipToHuman(ip) + " is the int: " + ip);
+		int prefixIP = ip >>> (32 - prefixLength);
+		//System.out.println("shortened: " + prefixIP);
 
 		switch (prefixLength) {
 		case 28:
@@ -150,74 +157,112 @@ class LongestPrefixMatcher {
 	private int lookup(int ip) {
 		System.out.println("looking for: " + ipToHuman(ip));
 		Integer foundIP;
-
-		foundIP = (Integer) p28.find(ip >> 4);
-		if (foundIP == null) {
-			foundIP = (Integer) p27.find(ip >> 5);
-		}
-		if (foundIP == null) {
-			foundIP = (Integer) p26.find(ip >> 6);
-		}
-		if (foundIP == null) {
-			foundIP = (Integer) p25.find(ip >> 7);
-		}
-		if (foundIP == null) {
-			foundIP = (Integer) p24.find(ip >> 8);
-		}
-		if (foundIP == null) {
-			foundIP = (Integer) p23.find(ip >> 9);
-		}
-		if (foundIP == null) {
-			foundIP = (Integer) p22.find(ip >> 10);
-		}
-		if (foundIP == null) {
-			foundIP = (Integer) p21.find(ip >> 11);
-		}
-		if (foundIP == null) {
-			foundIP = (Integer) p20.find(ip >> 12);
-		}
-		if (foundIP == null) {
-			foundIP = (Integer) p19.find(ip >> 13);
-		}
-		if (foundIP == null) {
-			foundIP = (Integer) p18.find(ip >> 14);
-		}
-		if (foundIP == null) {
-			foundIP = (Integer) p17.find(ip >> 15);
-		}
-		if (foundIP == null) {
-			foundIP = (Integer) p16.find(ip >> 16);
-		}
-		if (foundIP == null) {
-			foundIP = (Integer) p15.find(ip >> 17);
-		}
-		if (foundIP == null) {
-			foundIP = (Integer) p14.find(ip >> 18);
-		}
-		if (foundIP == null) {
-			foundIP = (Integer) p13.find(ip >> 19);
-		}
-		if (foundIP == null) {
-			foundIP = (Integer) p12.find(ip >> 20);
-		}
-		if (foundIP == null) {
-			foundIP = (Integer) p11.find(ip >> 21);
-		}
-		if (foundIP == null) {
-			foundIP = (Integer) p10.find(ip >> 22);
-		}
-		if (foundIP == null) {
-			foundIP = (Integer) p09.find(ip >> 23);
-		}
-		if (foundIP == null) {
-			foundIP = (Integer) p08.find(ip >> 24);
-		}
-
-		System.out.println("Found IP: " + foundIP);
-		if (foundIP == -1) {
-			return -1;
+		
+		int result = Collections.binarySearch(p28, (ip >>> 4));
+		if (result < 0) {
+			result = Collections.binarySearch(p27, (ip >>> 5));
 		} else {
-			return ports.get(foundIP);
+			return (ports.get(p28.get(result)));
+		}
+		if (result < 0) {
+			result = Collections.binarySearch(p26, (ip >>> 6));
+		} else {
+			return (ports.get(p27.get(result)));
+		}
+		if (result < 0) {
+			result = Collections.binarySearch(p25, (ip >>> 7));
+		} else {
+			return (ports.get(p26.get(result)));
+		}
+		if (result < 0) {
+			result = Collections.binarySearch(p24, (ip >>> 8));
+		} else {
+			return (ports.get(p25.get(result)));
+		}
+		if (result < 0) {
+			result = Collections.binarySearch(p23, (ip >>> 9));
+		} else {
+			return (ports.get(p24.get(result)));
+		}
+		if (result < 0) {
+			result = Collections.binarySearch(p22, (ip >>> 10));
+		} else {
+			return (ports.get(p23.get(result)));
+		}
+		if (result < 0) {
+			result = Collections.binarySearch(p21, (ip >>> 11));
+		} else {
+			return (ports.get(p22.get(result)));
+		}
+		if (result < 0) {
+			result = Collections.binarySearch(p20, (ip >>> 12));
+		} else {
+			return (ports.get(p21.get(result)));
+		}
+		if (result < 0) {
+			result = Collections.binarySearch(p19, (ip >>> 13));
+		} else {
+			return (ports.get(p20.get(result)));
+		}
+		if (result < 0) {
+			result = Collections.binarySearch(p18, (ip >>> 14));
+		} else {
+			return (ports.get(p19.get(result)));
+		}
+		if (result < 0) {
+			result = Collections.binarySearch(p17, (ip >>> 15));
+		} else {
+			return (ports.get(p18.get(result)));
+		}
+		if (result < 0) {
+			result = Collections.binarySearch(p16, (ip >>> 16));
+		} else {
+			return (ports.get(p17.get(result)));
+		}
+		if (result < 0) {
+			result = Collections.binarySearch(p15, (ip >>> 17));
+		} else {
+			return (ports.get(p16.get(result)));
+		}
+		if (result < 0) {
+			result = Collections.binarySearch(p14, (ip >>> 18));
+		} else {
+			return (ports.get(p15.get(result)));
+		}
+		if (result < 0) {
+			result = Collections.binarySearch(p13, (ip >>> 19));
+		} else {
+			return (ports.get(p14.get(result)));
+		}
+		if (result < 0) {
+			result = Collections.binarySearch(p12, (ip >>> 20));
+		} else {
+			return (ports.get(p13.get(result)));
+		}
+		if (result < 0) {
+			result = Collections.binarySearch(p11, (ip >>> 21));
+		} else {
+			return (ports.get(p12.get(result)));
+		}
+		if (result < 0) {
+			result = Collections.binarySearch(p10, (ip >>> 22));
+		} else {
+			return (ports.get(p11.get(result)));
+		}
+		if (result < 0) {
+			result = Collections.binarySearch(p09, (ip >>> 23));
+		} else {
+			return (ports.get(p10.get(result)));
+		}
+		if (result < 0) {
+			result = Collections.binarySearch(p08, (ip >>> 24));
+		} else {
+			return (ports.get(p09.get(result)));
+		}
+		if (result >= 0) {
+			return (ports.get(p08.get(result)));
+		} else {
+			return -1;
 		}
 	}
 
