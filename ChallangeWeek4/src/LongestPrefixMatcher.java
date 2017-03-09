@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.TreeMap;
 
 class LongestPrefixMatcher {
@@ -10,27 +11,27 @@ class LongestPrefixMatcher {
 	public static final String ROUTES_FILE = "src/routes.txt";
 	public static final String LOOKUP_FILE = "src/lookup.txt";
 
-	protected BinarySearchTree p28 = new BinarySearchTree();
-	protected BinarySearchTree p27 = new BinarySearchTree();
-	protected BinarySearchTree p26 = new BinarySearchTree();
-	protected BinarySearchTree p25 = new BinarySearchTree();
-	protected BinarySearchTree p24 = new BinarySearchTree();
-	protected BinarySearchTree p23 = new BinarySearchTree();
-	protected BinarySearchTree p22 = new BinarySearchTree();
-	protected BinarySearchTree p21 = new BinarySearchTree();
-	protected BinarySearchTree p20 = new BinarySearchTree();
-	protected BinarySearchTree p19 = new BinarySearchTree();
-	protected BinarySearchTree p18 = new BinarySearchTree();
-	protected BinarySearchTree p17 = new BinarySearchTree();
-	protected BinarySearchTree p16 = new BinarySearchTree();
-	protected BinarySearchTree p15 = new BinarySearchTree();
-	protected BinarySearchTree p14 = new BinarySearchTree();
-	protected BinarySearchTree p13 = new BinarySearchTree();
-	protected BinarySearchTree p12 = new BinarySearchTree();
-	protected BinarySearchTree p11 = new BinarySearchTree();
-	protected BinarySearchTree p10 = new BinarySearchTree();
-	protected BinarySearchTree p09 = new BinarySearchTree();
-	protected BinarySearchTree p08 = new BinarySearchTree();
+	protected ArrayList<Integer> p28 = new ArrayList<>();
+	protected ArrayList<Integer> p27 = new ArrayList<>();
+	protected ArrayList<Integer> p26 = new ArrayList<>();
+	protected ArrayList<Integer> p25 = new ArrayList<>();
+	protected ArrayList<Integer> p24 = new ArrayList<>();
+	protected ArrayList<Integer> p23 = new ArrayList<>();
+	protected ArrayList<Integer> p22 = new ArrayList<>();
+	protected ArrayList<Integer> p21 = new ArrayList<>();
+	protected ArrayList<Integer> p20 = new ArrayList<>();
+	protected ArrayList<Integer> p19 = new ArrayList<>();
+	protected ArrayList<Integer> p18 = new ArrayList<>();
+	protected ArrayList<Integer> p17 = new ArrayList<>();
+	protected ArrayList<Integer> p16 = new ArrayList<>();
+	protected ArrayList<Integer> p15 = new ArrayList<>();
+	protected ArrayList<Integer> p14 = new ArrayList<>();
+	protected ArrayList<Integer> p13 = new ArrayList<>();
+	protected ArrayList<Integer> p12 = new ArrayList<>();
+	protected ArrayList<Integer> p11 = new ArrayList<>();
+	protected ArrayList<Integer> p10 = new ArrayList<>();
+	protected ArrayList<Integer> p09 = new ArrayList<>();
+	protected ArrayList<Integer> p08 = new ArrayList<>();
 	protected TreeMap<Integer, Integer> ports = new TreeMap<>();
 
 	/**
@@ -70,22 +71,22 @@ class LongestPrefixMatcher {
 
 		switch (prefixLength) {
 		case 28:
-			p28.insert(prefixIP);
+			p28.add(prefixIP);
 			break;
 		case 27:
-			p27.insert(prefixIP);
+			p27.add(prefixIP);
 			break;
 		case 26:
-			p26.insert(prefixIP);
+			p26.add(prefixIP);
 			break;
 		case 25:
-			p25.insert(prefixIP);
+			p25.add(prefixIP);
 			break;
 		case 24:
-			p24.insert(prefixIP);
+			p24.add(prefixIP);
 			break;
 		case 23:
-			p23.insert(prefixIP);
+			p23.add(prefixIP);
 			break;
 		case 22:
 			p22.insert(prefixIP);
