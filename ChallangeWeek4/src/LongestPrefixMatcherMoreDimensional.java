@@ -3,36 +3,38 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Hashtable;
 import java.util.TreeMap;
 
-class LongestPrefixMatcher {
+class LongestPrefixMatcherMoreDimensional {
 	// TODO: Request access token from your student assistant
 	public static final String ACCESS_TOKEN = "s1776592_ys2h8";
 
 	public static final String ROUTES_FILE = "routes.txt";
 	public static final String LOOKUP_FILE = "lookup.txt";
+
+	protected ArrayList<ArrayList<Integer>> data = new ArrayList<ArrayList<Integer>>();
+	protected ArrayList<TreeMap<Integer,Integer>> ports = new ArrayList<TreeMap<Integer,Integer>>();
 	
-	protected ArrayList<Hashtable<Integer,Integer>> data = new ArrayList<Hashtable<Integer,Integer>>();
 
 	/**
 	 * Main entry point
 	 */
 	public static void main(String[] args) {
 		System.out.println(ACCESS_TOKEN);
-		new LongestPrefixMatcher();
+		new LongestPrefixMatcherMoreDimensional();
 	}
 
 	/**
 	 * Constructs a new LongestPrefixMatcher and starts routing
 	 */
-	public LongestPrefixMatcher() {
-		for (int i = 0; i <= 20; i++) {
-			data.add(new Hashtable<Integer,Integer>(100000));
+	public LongestPrefixMatcherMoreDimensional() {
+		for (int i = 0; i <= 20 ; i++) {
+			data.add(new ArrayList<Integer>());
+			ports.add(new TreeMap<Integer,Integer>());
 		}
 		
 		
-		this.readRoutes();		
+		this.readRoutes();	
 		this.readLookup();
 
 	}
@@ -54,8 +56,8 @@ class LongestPrefixMatcher {
 		
 		// get Prefix
 		int prefixIP = ip >>> (32 - prefixLength);
-		
-		data.get(prefixLength-8).put(prefixIP, portNumber);
+		data.get(prefixLength-8).add(prefixIP);
+		ports.get(prefixLength-8).put(prefixIP, portNumber);
 		
 	}
 
@@ -66,16 +68,18 @@ class LongestPrefixMatcher {
 	 *            The IP address to be looked up in integer representation
 	 * @return The port number this IP maps to
 	 */
-	private int lookup(int ip) {
+	private int lookup(int ip) {		
 		
-		Integer result = -1;
+		int result = -1;
 		int i = 0;
-		while (i < 21) {
-			result = data.get(20-i).get(ip >>> (4+i));
-			if (result != null) {
-				return result;
-			}
+		int currentIndex = 0;
+		while (result < 0 && i <= 20) {
+			currentIndex = 20-i;
+			result = Collections.binarySearch(data.get(currentIndex), (ip >>> (i + 4)));
 			i++;
+			if (result >= 0) {
+				return ports.get(currentIndex).get(data.get(currentIndex).get(result));
+			}
 		}
 		return -1;
 	}
