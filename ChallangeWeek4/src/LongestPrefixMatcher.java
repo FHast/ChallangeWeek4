@@ -355,7 +355,7 @@ class LongestPrefixMatcher {
 		try {
 			br = new BufferedReader(new FileReader(LOOKUP_FILE));
 			int count = 0;
-			StringBuilder sb = new StringBuilder(1024 * 4);
+			StringBuilder sb = new StringBuilder(4096 * 4);
 			// writing each lookup result to disk separately is very slow;
 			// therefore, we collect up to 1024 results into a string and
 			// write that all at once.
