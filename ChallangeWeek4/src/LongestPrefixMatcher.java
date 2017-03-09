@@ -33,7 +33,28 @@ class LongestPrefixMatcher {
 	protected ArrayList<Integer> p10 = new ArrayList<>();
 	protected ArrayList<Integer> p09 = new ArrayList<>();
 	protected ArrayList<Integer> p08 = new ArrayList<>();
-	protected TreeMap<Integer, Integer> ports = new TreeMap<>();
+	protected TreeMap<Integer, Integer> ports28 = new TreeMap<>();
+	protected TreeMap<Integer, Integer> ports27 = new TreeMap<>();
+	protected TreeMap<Integer, Integer> ports26 = new TreeMap<>();
+	protected TreeMap<Integer, Integer> ports25 = new TreeMap<>();
+	protected TreeMap<Integer, Integer> ports24 = new TreeMap<>();
+	protected TreeMap<Integer, Integer> ports23 = new TreeMap<>();
+	protected TreeMap<Integer, Integer> ports22 = new TreeMap<>();
+	protected TreeMap<Integer, Integer> ports21 = new TreeMap<>();
+	protected TreeMap<Integer, Integer> ports20 = new TreeMap<>();
+	protected TreeMap<Integer, Integer> ports19 = new TreeMap<>();
+	protected TreeMap<Integer, Integer> ports18 = new TreeMap<>();
+	protected TreeMap<Integer, Integer> ports17 = new TreeMap<>();
+	protected TreeMap<Integer, Integer> ports16 = new TreeMap<>();
+	protected TreeMap<Integer, Integer> ports15 = new TreeMap<>();
+	protected TreeMap<Integer, Integer> ports14 = new TreeMap<>();
+	protected TreeMap<Integer, Integer> ports13 = new TreeMap<>();
+	protected TreeMap<Integer, Integer> ports12 = new TreeMap<>();
+	protected TreeMap<Integer, Integer> ports11 = new TreeMap<>();
+	protected TreeMap<Integer, Integer> ports10 = new TreeMap<>();
+	protected TreeMap<Integer, Integer> ports09 = new TreeMap<>();
+	protected TreeMap<Integer, Integer> ports08 = new TreeMap<>();
+	
 
 	/**
 	 * Main entry point
@@ -48,10 +69,6 @@ class LongestPrefixMatcher {
 	 */
 	public LongestPrefixMatcher() {
 		this.readRoutes();
-		int ip = parseIP("1.0.19.6");
-		System.out.println("looking for: " + ip + ", shortened: " + (ip >>> 9));
-		System.out.println("position in p23: " + Collections.binarySearch(p23, ip >>> 9));
-		System.out.println("portnumber in map: " + (ports.get((ip >>> 9))));
 		this.readLookup();
 
 	}
@@ -70,89 +87,98 @@ class LongestPrefixMatcher {
 	private void addRoute(int ip, byte prefixLength, int portNumber) {
 		// Buckets for every prefixlength
 		// Binary tree for each bucket
-
-		
 		
 		// get Prefix
-		//System.out.println(ipToHuman(ip) + " is the int: " + ip);
 		int prefixIP = ip >>> (32 - prefixLength);
-		//System.out.println("shortened: " + prefixIP);
-		
-		if (prefixIP == 32777) {
-			System.out.println("my ip: " + ip + " binary: " + Integer.toBinaryString(ip));
-			System.out.println("written: " + ipToHuman(ip) + "/" + prefixLength);
-			System.out.println("my portnumber: " + portNumber);
-		}
 
 		switch (prefixLength) {
 		case 28:
 			p28.add(prefixIP);
+			ports28.put(prefixIP, portNumber);
 			break;
 		case 27:
 			p27.add(prefixIP);
+			ports27.put(prefixIP, portNumber);
 			break;
 		case 26:
 			p26.add(prefixIP);
+			ports26.put(prefixIP, portNumber);
 			break;
 		case 25:
 			p25.add(prefixIP);
+			ports25.put(prefixIP, portNumber);
 			break;
 		case 24:
 			p24.add(prefixIP);
+			ports24.put(prefixIP, portNumber);
 			break;
 		case 23:
 			p23.add(prefixIP);
+			ports23.put(prefixIP, portNumber);
 			break;
 		case 22:
 			p22.add(prefixIP);
+			ports22.put(prefixIP, portNumber);
 			break;
 		case 21:
 			p21.add(prefixIP);
+			ports21.put(prefixIP, portNumber);
 			break;
 		case 20:
 			p20.add(prefixIP);
+			ports20.put(prefixIP, portNumber);
 			break;
 		case 19:
 			p19.add(prefixIP);
+			ports19.put(prefixIP, portNumber);
 			break;
 		case 18:
 			p18.add(prefixIP);
+			ports18.put(prefixIP, portNumber);
 			break;
 		case 17:
 			p17.add(prefixIP);
+			ports17.put(prefixIP, portNumber);
 			break;
 		case 16:
 			p16.add(prefixIP);
+			ports16.put(prefixIP, portNumber);
 			break;
 		case 15:
 			p15.add(prefixIP);
+			ports15.put(prefixIP, portNumber);
 			break;
 		case 14:
 			p14.add(prefixIP);
+			ports14.put(prefixIP, portNumber);
 			break;
 		case 13:
 			p13.add(prefixIP);
+			ports13.put(prefixIP, portNumber);
 			break;
 		case 12:
 			p12.add(prefixIP);
+			ports12.put(prefixIP, portNumber);
 			break;
 		case 11:
 			p11.add(prefixIP);
+			ports11.put(prefixIP, portNumber);
 			break;
 		case 10:
 			p10.add(prefixIP);
+			ports10.put(prefixIP, portNumber);
 			break;
 		case 9:
 			p09.add(prefixIP);
+			ports09.put(prefixIP, portNumber);
 			break;
 		case 8:
 			p08.add(prefixIP);
+			ports08.put(prefixIP, portNumber);
 			break;
 		default:
 			System.err.println("No Bucket for prefix length: " + prefixLength);
 		}
-		// Map for ip -> portnumber
-		ports.put(prefixIP, portNumber);
 	}
 
 	/**
@@ -164,111 +190,110 @@ class LongestPrefixMatcher {
 	 */
 	private int lookup(int ip) {
 		System.out.println("looking for: " + ipToHuman(ip));
-		Integer foundIP;
 		
 		int result = Collections.binarySearch(p28, (ip >>> 4));
 		if (result < 0) {
 			result = Collections.binarySearch(p27, (ip >>> 5));
 		} else {
-			return (ports.get(p28.get(result)));
+			return (ports28.get(p28.get(result)));
 		}
 		if (result < 0) {
 			result = Collections.binarySearch(p26, (ip >>> 6));
 		} else {
-			return (ports.get(p27.get(result)));
+			return (ports27.get(p27.get(result)));
 		}
 		if (result < 0) {
 			result = Collections.binarySearch(p25, (ip >>> 7));
 		} else {
-			return (ports.get(p26.get(result)));
+			return (ports26.get(p26.get(result)));
 		}
 		if (result < 0) {
 			result = Collections.binarySearch(p24, (ip >>> 8));
 		} else {
-			return (ports.get(p25.get(result)));
+			return (ports25.get(p25.get(result)));
 		}
 		if (result < 0) {
 			result = Collections.binarySearch(p23, (ip >>> 9));
 		} else {
-			return (ports.get(p24.get(result)));
+			return (ports24.get(p24.get(result)));
 		}
 		if (result < 0) {
 			result = Collections.binarySearch(p22, (ip >>> 10));
 		} else {
-			return (ports.get(p23.get(result)));
+			return (ports23.get(p23.get(result)));
 		}
 		if (result < 0) {
 			result = Collections.binarySearch(p21, (ip >>> 11));
 		} else {
-			return (ports.get(p22.get(result)));
+			return (ports22.get(p22.get(result)));
 		}
 		if (result < 0) {
 			result = Collections.binarySearch(p20, (ip >>> 12));
 		} else {
-			return (ports.get(p21.get(result)));
+			return (ports21.get(p21.get(result)));
 		}
 		if (result < 0) {
 			result = Collections.binarySearch(p19, (ip >>> 13));
 		} else {
-			return (ports.get(p20.get(result)));
+			return (ports20.get(p20.get(result)));
 		}
 		if (result < 0) {
 			result = Collections.binarySearch(p18, (ip >>> 14));
 		} else {
-			return (ports.get(p19.get(result)));
+			return (ports19.get(p19.get(result)));
 		}
 		if (result < 0) {
 			result = Collections.binarySearch(p17, (ip >>> 15));
 		} else {
-			return (ports.get(p18.get(result)));
+			return (ports18.get(p18.get(result)));
 		}
 		if (result < 0) {
 			result = Collections.binarySearch(p16, (ip >>> 16));
 		} else {
-			return (ports.get(p17.get(result)));
+			return (ports17.get(p17.get(result)));
 		}
 		if (result < 0) {
 			result = Collections.binarySearch(p15, (ip >>> 17));
 		} else {
-			return (ports.get(p16.get(result)));
+			return (ports16.get(p16.get(result)));
 		}
 		if (result < 0) {
 			result = Collections.binarySearch(p14, (ip >>> 18));
 		} else {
-			return (ports.get(p15.get(result)));
+			return (ports15.get(p15.get(result)));
 		}
 		if (result < 0) {
 			result = Collections.binarySearch(p13, (ip >>> 19));
 		} else {
-			return (ports.get(p14.get(result)));
+			return (ports14.get(p14.get(result)));
 		}
 		if (result < 0) {
 			result = Collections.binarySearch(p12, (ip >>> 20));
 		} else {
-			return (ports.get(p13.get(result)));
+			return (ports13.get(p13.get(result)));
 		}
 		if (result < 0) {
 			result = Collections.binarySearch(p11, (ip >>> 21));
 		} else {
-			return (ports.get(p12.get(result)));
+			return (ports12.get(p12.get(result)));
 		}
 		if (result < 0) {
 			result = Collections.binarySearch(p10, (ip >>> 22));
 		} else {
-			return (ports.get(p11.get(result)));
+			return (ports11.get(p11.get(result)));
 		}
 		if (result < 0) {
 			result = Collections.binarySearch(p09, (ip >>> 23));
 		} else {
-			return (ports.get(p10.get(result)));
+			return (ports10.get(p10.get(result)));
 		}
 		if (result < 0) {
 			result = Collections.binarySearch(p08, (ip >>> 24));
 		} else {
-			return (ports.get(p09.get(result)));
+			return (ports09.get(p09.get(result)));
 		}
 		if (result >= 0) {
-			return (ports.get(p08.get(result)));
+			return (ports08.get(p08.get(result)));
 		} else {
 			return -1;
 		}
