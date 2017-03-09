@@ -89,49 +89,49 @@ class LongestPrefixMatcher {
 			p23.add(prefixIP);
 			break;
 		case 22:
-			p22.insert(prefixIP);
+			p22.add(prefixIP);
 			break;
 		case 21:
-			p21.insert(prefixIP);
+			p21.add(prefixIP);
 			break;
 		case 20:
-			p20.insert(prefixIP);
+			p20.add(prefixIP);
 			break;
 		case 19:
-			p19.insert(prefixIP);
+			p19.add(prefixIP);
 			break;
 		case 18:
-			p18.insert(prefixIP);
+			p18.add(prefixIP);
 			break;
 		case 17:
-			p17.insert(prefixIP);
+			p17.add(prefixIP);
 			break;
 		case 16:
-			p16.insert(prefixIP);
+			p16.add(prefixIP);
 			break;
 		case 15:
-			p15.insert(prefixIP);
+			p15.add(prefixIP);
 			break;
 		case 14:
-			p14.insert(prefixIP);
+			p14.add(prefixIP);
 			break;
 		case 13:
-			p13.insert(prefixIP);
+			p13.add(prefixIP);
 			break;
 		case 12:
-			p12.insert(prefixIP);
+			p12.add(prefixIP);
 			break;
 		case 11:
-			p11.insert(prefixIP);
+			p11.add(prefixIP);
 			break;
 		case 10:
-			p10.insert(prefixIP);
+			p10.add(prefixIP);
 			break;
 		case 9:
-			p09.insert(prefixIP);
+			p09.add(prefixIP);
 			break;
 		case 8:
-			p08.insert(prefixIP);
+			p08.add(prefixIP);
 			break;
 		default:
 			System.err.println("No Bucket for prefix length: " + prefixLength);
