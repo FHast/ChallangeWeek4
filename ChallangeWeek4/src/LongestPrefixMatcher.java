@@ -51,7 +51,7 @@ class LongestPrefixMatcher {
 		int ip = parseIP("1.0.19.6");
 		System.out.println("looking for: " + ip + ", shortened: " + (ip >>> 9));
 		System.out.println("position in p23: " + Collections.binarySearch(p23, ip >>> 9));
-		System.out.println("portnumber in map: " + ports.get(ports.get((ip >>> 9))));
+		System.out.println("portnumber in map: " + (ports.get((ip >>> 9))));
 		this.readLookup();
 
 	}
@@ -71,10 +71,18 @@ class LongestPrefixMatcher {
 		// Buckets for every prefixlength
 		// Binary tree for each bucket
 
+		
+		
 		// get Prefix
 		//System.out.println(ipToHuman(ip) + " is the int: " + ip);
 		int prefixIP = ip >>> (32 - prefixLength);
 		//System.out.println("shortened: " + prefixIP);
+		
+		if (prefixIP == 32777) {
+			System.out.println("my ip: " + ip + " binary: " + Integer.toBinaryString(ip));
+			System.out.println("written: " + ipToHuman(ip) + "/" + prefixLength);
+			System.out.println("my portnumber: " + portNumber);
+		}
 
 		switch (prefixLength) {
 		case 28:
